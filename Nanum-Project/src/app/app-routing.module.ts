@@ -10,6 +10,8 @@ import { MainComponent } from './main/main.component';
 import { NotFoundComponent } from './common/not-found/not-found.component';
 import { NavigatorComponent } from './common/navigator/navigator.component';
 import { MainLeftComponent } from './main/main-left/main-left.component';
+import { QuestionComponent } from './main/question/question.component';
+import { AnswersComponent } from './main/answers/answers.component';
 import { FeedModule } from './shared/feed/feed.module';
 import { FeedComponent } from './shared/feed/feed.component';
 
@@ -20,20 +22,12 @@ import { TopicComponent } from './topic/topic.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login/main', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'main', component: MainFeedComponent, canActivate: [LoginGuard],
-    children: [
-      { path: 'leftmenu', component: MainLeftComponent }
-    ]
-  },
-  { path: 'feed', component: FeedComponent, canActivate: [LoginGuard]},
+  { path: 'answer', component: MainComponent, canActivate: [LoginGuard] },
+  { path: 'question', component: MainComponent, canActivate: [LoginGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [LoginGuard] },
   { path: 'maintest', component: MainComponent },
   { path: 'detail', component: QuestionDetailComponent , canActivate: [LoginGuard] },
   { path: 'topic', component: TopicComponent, canActivate: [LoginGuard] },
-  { path: '**', component: NotFoundComponent},
-  // 필수 추가 요망
-  // 메인피드 임시 path 입니다
-  { path: 'main', component: MainFeedComponent, canActivate: [LoginGuard] },
   { path: '**', component: NotFoundComponent}
 ];
 
